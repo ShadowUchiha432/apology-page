@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #d0f0ff 10%, #f0e0ff 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.boy-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  animation: floatBoy 3s ease-in-out infinite;
+}
+
+.boy {
+  width: 220px;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 15px rgba(170, 200, 255, 0.8));
+  animation: glowPulse 4s infinite alternate;
+}
+
+.magic-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(173, 216, 230, 0.4), transparent);
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: magicPulse 3s infinite;
+  filter: blur(20px);
+}
+
+.message {
+  font-size: 2.2rem;
+  color: #333;
+  text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+  animation: glowText 3s ease-in-out infinite;
+}
+
+.subtext {
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+#heartButton {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #ff9ebd, #ffd1e3);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 192, 203, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#heartButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(255, 182, 193, 0.8);
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ✨ Animations */
+@keyframes floatBoy {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes magicPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 15px rgba(173, 216, 230, 0.6)); }
+  50% { filter: drop-shadow(0 0 25px rgba(150, 200, 255, 1)); }
+}
+
+@keyframes glowText {
+  0%, 100% { text-shadow: 0 0 10px #ffc0cb; }
+  50% { text-shadow: 0 0 25px #ff8fa3, 0 0 40px #ffe6eb; }
+}
