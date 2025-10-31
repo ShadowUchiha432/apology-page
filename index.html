@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I'm Sorry 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(180deg, #fff0f5, #f8faff);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  /* floating hearts */
+  .heart {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff6b8a;
+    transform: rotate(45deg);
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+    border-radius: 2px;
+  }
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff6b8a;
+    border-radius: 50%;
+  }
+  .heart::before { top: -7px; left: 0; }
+  .heart::after { left: -7px; top: 0; }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
+    100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+  }
+
+  /* main card */
+  .card {
+    position: relative;
+    z-index: 2;
+    background: #ffffffcc;
+    border-radius: 25px;
+    box-shadow: 0 12px 30px rgba(255, 100, 140, 0.15);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    padding: 30px 25px 40px;
+    animation: fadeIn 1.2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.8) translateY(50px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* heart animation */
+  .heartPulse {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: #ff6b8a;
+    position: relative;
+    transform: rotate(45deg);
+    border-radius: 10px;
+    animation: pulse 1.5s infinite;
+  }
+
+  .heartPulse::before,
+  .heartPulse::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #ff6b8a;
+    border-radius: 50%;
+  }
+  .heartPulse::before { top: -50px; left: 0; }
+  .heartPulse::after { left: -50px; top: 0; }
+
+  @keyframes pulse {
+    0%, 100% { transform: rotate(45deg) scale(1); }
+    50% { transform: rotate(45deg) scale(1.1); }
+  }
+
+  h1 {
+    margin-top: 25px;
+    font-family: 'Sacramento', cursive;
+    font-size: 38px;
+    color: #ff6b8a;
+  }
+
+  p {
+    color: #444;
+    margin: 15px 0 25px;
+    font-size: 16px;
+    animation: textPop 1s ease forwards;
+  }
+
+  @keyframes textPop {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  button {
+    background: linear-gradient(90deg, #ff99b8, #ffa6ce);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    box-shadow: 0 6px 18px rgba(255,107,138,0.25);
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255,107,138,0.35);
+  }
+
+  /* Reveal text animation */
+  #extra {
+    display: none;
+    opacity: 0;
+    margin-top: 10px;
+    font-size: 17px;
+    color: #ff6b8a;
+    font-weight: 600;
+  }
+
+  #extra.show {
+    display: block;
+    animation: fadeSlide 0.8s ease forwards;
+  }
+
+  @keyframes fadeSlide {
+    0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  footer {
+    position: fixed;
+    bottom: 12px;
+    font-size: 13px;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="heartPulse"></div>
+  <h1>I'm Sorry 💕</h1>
+  <p>I didn’t mean to upset you, babe. You mean the world to me 🌸</p>
+  <button onclick="revealApology()">Tap for a Surprise 💖</button>
+  <p id="extra">I’ll keep trying till your smile returns 💞</p>
+</div>
+
+<footer>Made with love & regret 🫶</footer>
+
+<script>
+  // Floating hearts animation
+  const colors = ['#ff6b8a','#ff99b8','#ffb3c6','#ffdde4'];
+  for(let i=0;i<20;i++){
+    const h = document.createElement('div');
+    h.classList.add('heart');
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.animationDelay = Math.random()*5 + 's';
+    h.style.background = colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(h);
+  }
+
+  // Reveal message animation
+  function revealApology(){
+    const text = document.getElementById('extra');
+    text.classList.toggle('show');
+  }
+</script>
+
+</body>
+</html>
